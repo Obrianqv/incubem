@@ -1,0 +1,155 @@
+<title>Incubem</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="<?php echo APP_CHARSET; ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<?php Tag::css('front-template/tubepress'); ?>
+<?php Tag::css('front-template/styles'); ?>
+<?php Tag::css('front-template/wp-paginate'); ?>
+<?php Tag::css('front-template/jquery.lightbox'); ?>
+<?php Tag::css('front-template/style');?>
+<?php Tag::css('front-template/nivo-slider')?>
+
+
+<?php echo Html::includeCss(); ?>
+
+<?php echo Tag::js('jquery/js-template/aa');?><?php echo Tag::js('jquery/js-template/aaa');?><?php echo Tag::js('jquery/js-template/aaaa');?><?php echo Tag::js('jquery/js-template/all');?><?php echo Tag::js('jquery/js-template/ga');?><?php echo Tag::js('jquery/js-template/plusone');?><?php echo Tag::js('jquery/js-template/widget');?><?php echo Tag::js('jquery/js-template/ga');?>
+<?php if(!APP_LOCAL) { ?>
+<link href="http://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet" type="text/css">
+<?php } ?>
+<style type="text/css" media="screen">
+.qtrans_flag span {
+	display:none
+}
+.qtrans_flag {
+	height:12px;
+	width:18px;
+	display:block
+}
+.qtrans_flag_and_text {
+	padding-left:20px
+}
+.qtrans_flag_es {
+	background:url(http://www.techo.org/wp-content/plugins/qtranslate/flags/es.png) no-repeat
+}
+.qtrans_flag_en {
+	background:url(http://www.techo.org/wp-content/plugins/qtranslate/flags/us.png) no-repeat
+}
+.qtrans_flag_uk {
+	background:url(http://www.techo.org/wp-content/plugins/qtranslate/flags/eu.png) no-repeat
+}
+.navbar-inner {
+	min-height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #fafafa;
+	background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+	background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+	background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+	background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+	border: 1px solid #d4d4d4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+top .navbar-inner, .navbar-static-top .navbar-inner {
+	border-width: 0 0 1px;
+}
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+	padding-left: 0;
+	padding-right: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+}
+.navbar .brand {
+	float: left;
+	display: block;
+	padding: 10px 20px 10px;
+	margin-left: -20px;
+	font-size: 20px;
+	font-weight: 200;
+	color: #777777;
+	text-shadow: 0 1px 0 #ffffff;
+}
+.pull-right {
+	float: right;
+}
+.navbar .btn, .navbar .btn-group {
+	margin-top: 5px;
+}
+.btn-success {
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #5bb75b;
+	background-image: -moz-linear-gradient(top, #62c462, #51a351);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+	background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+	background-image: -o-linear-gradient(top, #62c462, #51a351);
+	background-image: linear-gradient(to bottom, #62c462, #51a351);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+	border-color: #51a351 #51a351 #387038;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+ filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn {
+	display: inline-block;
+	padding: 4px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #333333;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+ filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	border: 1px solid #cccccc;
+	border-bottom-color: #b3b3b3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+}
+.btn-icon-only {
+	padding-left: 3px;
+	padding-right: 3px;
+	font-size: 15px;
+}
+ [class*=" icon-"] {
+ font-family: FontAwesome;
+ font-weight: normal;
+ font-style: normal;
+ text-decoration: inherit;
+ -webkit-font-smoothing: antialiased;
+}
+.icon-signin:before {
+	content: "\f090";
+}
+</style>
+<?php echo Tag::js('jquery/jquery.min').PHP_EOL; ?>
+<script type="text/javascript">TubePressGlobalJsConfig = { baseUrl : "http://www.techo.org/wp-content/plugins/tubepress", https : false };</script>

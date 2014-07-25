@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<?php View::partial('incubem/head') ?>
+</head>
+
+<body class="es-ES">
+<div id="fb-root"></div>
+
+<!----------------------------------------------------------------------------->
+
+<?php View::partial('incubem/header') ?>
+
+<!----------------------------------------------------------------------------->
+
+<?php View::content() ?>
+
+
+<script type="text/javascript">
+		$(document).ready(function(){
+			jQuery(".slider_stripe").each(function(){
+				var carousel = jQuery(this)
+				var itemWidth = carousel.attr("rel");
+				var numItems = carousel.find(".stripe ul li").length;
+				var page=Math.ceil(parseInt(carousel.find(".stripe").width())/itemWidth);
+				carousel.find(".items").css("width",numItems * itemWidth)
+				carousel.data("index",0).data("total",numItems-1);
+				carousel.find(".next").click(function(evt){
+					var index=parseInt(carousel.data("index"));
+					if(index < parseInt(carousel.data("total")/page)){
+						carousel.data("index",index+1);
+						var itemsOnPage = numItems - (carousel.data("index")*page);
+						var scrollAmount = page;
+						if(itemsOnPage<page) {
+							scrollAmount = itemsOnPage;
+						}
+						carousel.find(".items").animate({left:"-="+itemWidth*scrollAmount},250);
+					}
+					evt.preventDefault();
+				})
+				
+				carousel.find(".previous").click(function(evt){
+					var index=parseInt(carousel.data("index"));
+					if(index>0){
+						var itemsOnPage = numItems - (carousel.data("index")*page);
+						var scrollAmount = page;
+						if(itemsOnPage<page) {
+							scrollAmount = itemsOnPage;
+						}
+						carousel.data("index",index-1);
+						carousel.find(".items").animate({left:"+="+itemWidth*scrollAmount},250);
+					}
+					evt.preventDefault();
+				})
+				var interval = setInterval(function(){
+					var index=parseInt(carousel.data("index"));
+					if(index < parseInt(carousel.data("total")/page)){
+						carousel.find(".next").click();
+					}else{
+						carousel.data("index",0);
+						carousel.find(".items").animate({left:0},250);
+						//carousel.find(".previous").click();
+					}
+				},5000)
+			});
+		})
+
+        </script>
+<div class="wrapper footer_wrapper">
+  <div id="partners_wrapper">
+    <div id="partners">
+      <div class="panels superior">
+        <div id="regional" class="left_panel">
+          <h2 class="bold">Socios Estratégicos</h2>
+          <div class="slider_stripe" rel="102"> <a href="" class="arrow back previous"></a>
+            <div class="stripe">
+              <ul class="items" style="width: 816px; left: -408px;">
+                <li> <a href="http://www.bcg.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/bcg.jpg" alt="BCG" title="BCG"> </a></li>
+                <li> <a href="http://www.iadb.org/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/bid-fomin1.jpg" alt="BID-Fomin" title="BID-Fomin"> </a></li>
+                <li> <a href="http://www.burson-marsteller.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/burson.jpg" alt="Burson Marsteller" title="Burson Marsteller"> </a></li>
+                <li> <a href="http://www.deloitte.com/view/es_ES/es/index.htm" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/deloitte.jpg" alt="Deloitte" title="Deloitte"> </a></li>
+                <li> <a href="http://www.mecglobal.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/mec.jpg" alt="MEC" title="MEC"> </a></li>
+                <li> <a href="http://www.yr.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/YR-1.jpg" alt="Young and Rubicam" title="Young and Rubicam"> </a></li>
+                <li> <img src="http://www.techo.org/wp-content/uploads/2012/09/Bravo-1.jpg" alt="Bravo " title="Bravo "></li>
+                <li> <img src="" alt="" title=""></li>
+              </ul>
+            </div>
+            <a href="" class="arrow forward next"></a></div>
+        </div>
+        <div id="" class="right_panel">
+          <h2>Alianzas Corporativas Regionales</h2>
+          <div class="slider_stripe" rel="102"> <a href="" class="arrow back previous"></a>
+            <div class="stripe">
+              <ul class="items" style="width: 1122px; left: -714px;">
+                <li> <a href="http://www.americaeconomia.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/america-economia.jpg" alt="América Economía" title="América Economía"> </a></li>
+                <li> <a href="http://www.assist-card.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2013/08/ASSCARD-asoc.png" alt="Assist Card" title="Assist Card"> </a></li>
+                <li> <a href="http://corp.bankofamerica.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/bank-of-america-merril-lynch.jpg" alt="Bank of America Merril Lynch" title="Bank of America Merril Lynch"> </a></li>
+                <li> <a href="http://www.cat.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/caterpillar.jpg" alt="Caterpillar" title="Caterpillar"> </a></li>
+                <li> <a href="http://techo.org/dakar" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2013/12/logo_dakar_web_techo.jpg" alt="Dakar" title="Dakar"> </a></li>
+                <li> <a href="http://www.dpdhl.com/en/responsibility.html" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2014/02/DHL_rgb_newlogo.jpg" alt="DHL" title="DHL"> </a></li>
+                <li> <a href="https://www.jpmorgan.com/‎" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/jpmorgan.jpg" alt="J.P. Morgan" title="J.P. Morgan"> </a></li>
+                <li> <a href="http://www.lan.com/‎" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/lan.jpg" alt="LAN" title="LAN"> </a></li>
+                <li> <a href="http://www.porsche.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/porsche.jpg" alt="Porsche" title="Porsche"> </a></li>
+                <li> <a href="http://www.iprplc-gdfsuez.com/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/Suez.jpg" alt="International Power" title="International Power"> </a></li>
+                <li> <img src="" alt="" title=""></li>
+              </ul>
+            </div>
+            <a href="" class="arrow forward next"></a></div>
+        </div>
+      </div>
+      <div id="strategic">
+        <h2>Organismos y organizaciones asociadas</h2>
+        <div class="slider_stripe" rel="102"> <a href="" class="arrow back previous"></a>
+          <div class="stripe">
+            <ul class="items" style="width: 1326px; left: -408px;">
+              <li> <img src="http://www.techo.org/wp-content/uploads/2012/09/alianzas-regionales.jpg" alt="Alianzas Regionales" title="Alianzas Regionales"></li>
+              <li> <a href="http://www.agci.cl/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/agci.jpg" alt="AGCI" title="AGCI"> </a></li>
+              <li> <a href="http://www.snf.org/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/Stavros-Niarchos.jpg" alt="StavrosNiarchos " title="StavrosNiarchos "> </a></li>
+              <li> <a href="http://www.unasursg.org/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/unasur.jpg" alt="UNASUR" title="UNASUR"> </a></li>
+              <li> <img src="http://www.techo.org/wp-content/uploads/2012/09/organismos-asociados.jpg" alt="Organismos Asociados" title="Organismos Asociados"></li>
+              <li> <a href="http://www.clintonglobalinitiative.org/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/clinton-global-initiative.jpg" alt="Clinton Global Iniviative" title="Clinton Global Iniviative"> </a></li>
+              <li> <a href="http://www.un.org/es/ecosoc/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/ecosoc.jpg" alt="ECOSOC" title="ECOSOC"> </a></li>
+              <li> <a href="http://segib.org/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/segib.jpg" alt=" SEGIB" title=" SEGIB"> </a></li>
+              <li> <img src="http://www.techo.org/wp-content/uploads/2012/09/trabajo-en-red.jpg" alt="Trabajo en Red" title="Trabajo en Red"></li>
+              <li> <a href="https://www.isf.es" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/engineers-without-borders-uk.jpg" alt="Ingenieros sin Fronteras" title="Ingenieros sin Fronteras"> </a></li>
+              <li> <a href="http://www.flacsi.net" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/flacsi.jpg" alt="FLACSI" title="FLACSI"> </a></li>
+              <li> <a href="http://www.iidh.ed.cr/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/iidh.jpg" alt="IIDH" title="IIDH"> </a></li>
+              <li> <a href="http://www.cam.ac.uk/" target="_blank"> <img src="http://www.techo.org/wp-content/uploads/2012/09/universidad-de-cambridge.jpg" alt="Universidad de Cambrigde" title="Universidad de Cambrigde"> </a></li>
+            </ul>
+          </div>
+          <a href="" class="arrow forward next"></a></div>
+      </div>
+    </div>
+  </div>
+  <?php View::partial('incubem/footer') ?>
+</div>
+<script type="text/javascript">!window.jQuery && document.write('<script src="http://www.techo.org/wp-content/plugins/wp-lightbox/js/jquery.min.js?ver=1.4.2" type="text/javascript"><\/script>')</script> 
+<script type="text/javascript">
+		jQuery(document).ready(function(){
+		  
+		  jQuery.extend(jQuery.lightbox().options, {
+			emergefrom      : "top",
+			moveDuration    : 1000,
+			resizeDuration  : 1000
+		  });
+		  jQuery(".lightbox").lightbox({
+			
+			modal       : 1,
+			autoresize  : 1
+		  });
+		});
+	  </script> 
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var _wpcf7 = {"loaderUrl":"http:\/\/www.techo.org\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Enviando...","cached":"1"};
+	/* ]]> */
+	</script>
+<div id="1394145525207" class="jquery-lightbox-overlay" style="position: fixed; top: 0px; left: 0px; opacity: 0.6; display: none; z-index: 6999;"></div>
+<div class="jquery-lightbox-move" style="position: absolute; z-index: 7000; top: -999px; left: -999px;">
+  <div class="jquery-lightbox jquery-lightbox-mode-image">
+    <div class="jquery-lightbox-border-top-left"></div>
+    <div class="jquery-lightbox-border-top-middle"></div>
+    <div class="jquery-lightbox-border-top-right"></div>
+    <a class="jquery-lightbox-button-close" href="#close"><span>Close</span></a>
+    <div class="jquery-lightbox-navigator"><a class="jquery-lightbox-button-left" href="#"><span>Previous</span></a><a class="jquery-lightbox-button-right" href="#"><span>Next</span></a></div>
+    <div class="jquery-lightbox-buttons">
+      <div class="jquery-lightbox-buttons-init"></div>
+      <a class="jquery-lightbox-button-left" href="#"><span>Previous</span></a><a class="jquery-lightbox-button-max" href="#"><span>Maximize</span></a>
+      <div class="jquery-lightbox-buttons-custom"></div>
+      <a class="jquery-lightbox-button-right" href="#"><span>Next</span></a>
+      <div class="jquery-lightbox-buttons-end"></div>
+    </div>
+    <div class="jquery-lightbox-background"></div>
+    <div class="jquery-lightbox-html"></div>
+    <div class="jquery-lightbox-border-bottom-left"></div>
+    <div class="jquery-lightbox-border-bottom-middle"></div>
+    <div class="jquery-lightbox-border-bottom-right"></div>
+  </div>
+</div>
+</body>
+</html>

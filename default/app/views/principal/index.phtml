@@ -1,0 +1,235 @@
+<?php View::content(); ?>
+
+<div class="wrapper body_wrapper"> 
+  <script type="text/javascript">
+			(function($){
+				$.fn.massiveSlider = function (user_settings){
+					var settings = $.extend({
+						autoPlay:true,
+						autoPlayInterval: 7000,
+						onChange: changeTo,
+						controls: undefined
+					},user_settings);
+					var slider = $(this);
+					var controls = $(settings.controls);
+					if(!controls) return false;
+					slider.data("settings",settings);
+					slider.find(".slide").each(function(i){
+						$(this).attr("rel",i);
+						controls.find("ul").append("<li><a href='#"+i+"'></a></li>");
+					});
+					controls.find("ul").css("left",controls.width()/2-(controls.find("ul").width()-6)/2)
+					controls.find("li a").live("click",function(evt){
+						evt.preventDefault();
+						gotoSlide($(this).attr("href").substr(1,1),true)
+					});
+					controls.find("a.next").click(function(evt){
+						evt.preventDefault();
+						gotoSlide("next",true);
+					})
+					controls.find("a.previous").click(function(evt){
+						evt.preventDefault();
+						gotoSlide("previous",true);
+					})
+					if(settings.autoPlay){
+						slider.data("autoPlayInterval",setInterval(setupAutoplay,settings.autoPlayInterval))
+					}
+					function gotoSlide(where, userRequested){
+						var currentIndex =  parseInt(slider.find(".slide.current").attr("rel"));
+						var slidesLength = slider.find(".slide").length;
+						var nextSlide;
+						if(where=="next"){
+							nextSlide = slider.find(".slide").eq((currentIndex+1)% slidesLength );
+						
+						}else if(where == "previous"){
+							nextSlide = slider.find(".slide").eq((currentIndex-1)% slidesLength);
+						}else{
+							nextSlide = slider.find(".slide").eq(where);
+						}
+						if(settings.autoPlay && userRequested){
+							clearInterval(slider.data("autoPlayInterval"))
+							slider.data("autoPlayInterval",setInterval(setupAutoplay,settings.autoPlayInterval))
+						}
+						
+						settings.onChange(nextSlide);
+
+					}
+					function changeTo(newSlide){
+						var prevSlide = slider.find(".slide.current");
+						if(prevSlide.length>0) prevSlide.removeClass("current").fadeOut(500);
+						newSlide.addClass("current").fadeIn(500);
+						controls.find("li").eq(parseInt(newSlide.attr("rel"))).addClass("current").siblings().removeClass("current");
+					}
+					function setupAutoplay(){
+						gotoSlide("next");
+					}
+					changeTo(slider.find(".slide").first())
+				}
+			})(jQuery);
+			$(document).ready(function(){
+				
+				$("#massive-slider").massiveSlider({
+					autoPlay: true,
+					autoPlayInterval: 6000,
+					controls: ".massive-slider-controls"
+				});
+			})
+			
+</script>
+  <div id="massive-slider">
+  
+    <div class="slides">
+      
+      <?php foreach($listaEvento as $item) : ?>
+      
+      
+      <div class="slide" style="background-image: url(<?php echo $item -> ruta ?>); display: none;" rel="0"> <a href=""></a>
+      </div>
+
+
+
+
+<?php endforeach; ?>
+      
+  <!--    <div class="slide" style="background-image: url(http://www.techo.org/wp-content/uploads/2013/11/breakpoint_usa-1772x522.jpg); display: none;" rel="0"> <a href=""></a>
+      </div>
+      
+     <div class="slide current" style="background-image: url(http://www.techo.org/wp-content/uploads/2013/10/header-web-techo-pla-1920x522.jpg); display: block;" rel="1"> <a href=""></a></div>
+      
+      <div class="slide" style="background-image: url(http://www.techo.org/wp-content/uploads/2013/04/Header_web_TECHO_superar-1920x522.jpg); display: none;" rel="2"></div>
+      
+      <div class="slide" style="background-image: url(http://www.techo.org/wp-content/uploads/2012/06/trabajo3.jpg); display: none;" rel="3"></div>
+      
+      <div class="slide" style="background-image: url(http://www.techo.org/wp-content/uploads/2012/06/promocion4.jpg); display: none;" rel="4"> <a href="#"></a>
+      </div>-->
+      
+    </div>
+  </div>
+  <section class="body home">
+    <div class="massive-slider-controls"> <a href="#" class="previous"></a>
+      <ul style="left: 86.5px;">
+        <li class=""><a href="#0"></a></li>
+        <li class="current"><a href="#1"></a></li>
+       
+      </ul>
+      <a href="#" class="next"></a></div>
+    <ul id="big_buttons">
+      <li> <a href="http://www.techo.org/mira/" class="big_button mira">Mira</a></li>
+      <li> <a href="http://www.techo.org/escucha/" class="big_button escucha">Escucha</a></li>
+      <li> <a href="http://www.techo.org/opina/" class="big_button opina">Opina</a></li>
+      <li> <a href="http://www.techo.org/informate/" class="big_button informate">Infórmate</a></li>
+      <li class="last"> <a href="http://www.techo.org/participa/" class="big_button participa">Participa</a></li>
+    </ul>
+    <div id="top_panels">
+      <div class="left_panel"> <a class="donate" href="http://www.techo.org/haz-tu-donacion/"><img src="http://www.techo.org/wp-content/themes/techo/images/banners/haz-tu-donacion.png" alt="Haz tu donación"></a>
+        <div class="newsletter">
+          <h4>Newsletter</h4>
+          <form action="http://alpha.emailpanel.net/proc.php" method="post" id="_form_26788" accept-charset="utf-8" enctype="multipart/form-data" style="margin-bottom:3;">
+            <input type="text" name="email" id="ea" value="Ingresa tu correo para recibir noticias">
+            <input type="hidden" name="f" value="26788">
+            <input type="hidden" name="s" value="">
+            <input type="hidden" name="c" value="0">
+            <input type="hidden" name="m" value="0">
+            <input type="hidden" name="act" value="sub">
+            <input type="hidden" name="nlbox[]" value="3743">
+            <input type="submit" value="Enviar">
+          </form>
+        </div>
+        <div class="banners"> <a href="http://www.techo.org/que-es-el-centro-de-investigacion-social-cis/" class="link_block"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/centro-de-investigacion-social.jpg" alt="Centro de investigaci�n social"> </a> <a href="http://www.techo.org/por-que-somos-techo/" class="link_block"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/por-que-somos-techo.jpg" alt="Por qu� somos TECHO"> </a><a href="http://www.techo.org/sala-de-prensa/actividades-techo/" class="link_block"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/calendario-de-actividades.jpg" alt="Calendario de actividades"> </a></div>
+      </div>
+      <div class="right_panel">
+        <h2>Últimas noticias</h2>
+        <div class="slider_wrapper">
+          <div id="news_slider" class="nivoSlider"> <a href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/" class="nivo-imageLink" style="display: none;"><img title="200 voluntarios de TECHO se unen a pobladores y realizan la primera jornada ECO: escuchando a las comunidades" src="http://www.techo.org/wp-content/uploads/2014/02/encuesta-ECO-foto-1-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/" class="nivo-imageLink" style="display: none;"><img title="TECHO Venezuela: "Cada muerto, cada herido, nos entristece y nos llena de cuestionamientos"" src="http://www.techo.org/wp-content/uploads/2014/02/venezuela-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/informate/soledad-nunez-y-la-situacion-de-pobreza/" class="nivo-imageLink" style="display: block;"><img title="Soledad Nuñez: "La pobreza es una situación que cobra vidas todos los días"" src="http://www.techo.org/wp-content/uploads/2014/02/
+          
+          -660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/informate/techo-to-present-at-un/" class="nivo-imageLink" style="display: block;"><img title="TECHO presentará en evento de las Naciones Unidas: extrema pobreza y vivienda adecuada" src="http://www.techo.org/wp-content/uploads/2014/02/Untitled-13-660x182.png" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><img class="nivo-main-image" src="http://www.techo.org/wp-content/uploads/2014/02/413659_10151109091535075_40066015_o1-660x182.jpg" style="display: inline; height: 183px;">
+            <div class="nivo-caption" style="display: block;">TECHO presentará en evento de las Naciones Unidas: extrema pobreza y vivienda adecuada</div>
+            <div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
+            <div class="nivo-slice" name="0" style="left: 0px; width: 662px; height: 182px; opacity: 0; overflow: hidden; bottom: 0px;"><img src="http://www.techo.org/wp-content/uploads/2014/02/Untitled-13-660x182.png" style="position:absolute; width:662px; height:auto; display:block !important; top:0; left:-0px;"></div>
+          </div>
+          <div class="nivo-controlNav"><a class="nivo-control" rel="0">1</a><a class="nivo-control" rel="1">2</a><a class="nivo-control" rel="2">3</a><a class="nivo-control active" rel="3">4</a></div>
+        </div>
+        <div class="posts">
+          <div class="post">
+            <div class="post_image"> <img width="180" height="59" src="http://www.techo.org/wp-content/uploads/2014/02/encuesta-ECO-foto-1-180x59.jpg" class="attachment-home-thumb wp-post-image" alt="encuesta ECO foto 1" title="encuesta ECO foto 1"></div>
+            <div class="post_info"> <a href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/">200 voluntarios de TECHO se unen a pobladores y realizan la primera jornada ECO: escuchando a las comunidades</a>
+              <div class="tools">
+                <div class="fb-like" data-href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false" data-font="arial"></div>
+                <a href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/" class="twitter-share-button" data-lang="en">Tweet</a> <span class="googleplus">
+                <g:plusone size="small" href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/"></g:plusone>
+                </span> <a href="http://www.techo.org/informate/peru-nicaragua-y-panama-encuestas-eco/" class="read_more">» Ver más</a></div>
+            </div>
+          </div>
+          <div class="post">
+            <div class="post_image"> <img width="180" height="59" src="http://www.techo.org/wp-content/uploads/2014/02/venezuela-180x59.jpg" class="attachment-home-thumb wp-post-image" alt="venezuela" title="venezuela"></div>
+            <div class="post_info"> <a href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/">TECHO Venezuela: "Cada muerto, cada herido, nos entristece y nos llena de cuestionamientos"</a>
+              <div class="tools">
+                <div class="fb-like" data-href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/" data-send="false" data-layout="button_count" data-width="70" data-show-faces="false" data-font="arial"></div>
+                <a href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/" class="twitter-share-button" data-lang="en">Tweet</a> <span class="googleplus">
+                <g:plusone size="small" href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/"></g:plusone>
+                </span> <a href="http://www.techo.org/informate/postura-techo-venezuela-actualidad/" class="read_more">» Ver más</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="link_boxes">
+      <ul>
+        <li> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/datos-sobre-techo/voluntarios.jpg" class="lightbox" rel="group1"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/DATOS_295x130.png" alt="Datos sobre TECHO"> </a> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/datos-sobre-techo/cc.jpg" class="lightbox" rel="group1"></a> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/datos-sobre-techo/desarrollo-c.jpg" class="lightbox" rel="group1"></a></li>
+        <li> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/pobreza-en-latinoamerica/gini.jpg" class="lightbox" rel="group2"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/POBREZA_295x130.png" alt="Pobreza en Latinoamérica"> </a> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/pobreza-en-latinoamerica/indice-de-desarrollo-humano.jpg" class="lightbox" rel="group2"></a> <a href="http://www.techo.org/wp-content/themes/techo/images/infografias/pobreza-en-latinoamerica/pobreza-en-latinoamerica.jpg" class="lightbox" rel="group2"></a></li>
+        <li class="last"> <a href="http://www.techo.org/wp-content/themes/techo/images/donde-estamos.jpg" class="lightbox"> <img src="http://www.techo.org/wp-content/themes/techo/images/banners/PAISES_295x130.png" alt="Descubre en qué países estamos"> </a></li>
+      </ul>
+    </div>
+    <div id="bottom_panels">
+      <div class="left_panel">
+        <h2>Techo en tu país <a class="read_more" href="http://www.techo.org/en-tu-pais/">Ver más TECHO en tu país »</a></h2>
+        <div class="slider_wrapper">
+          <div id="local_news_slider" class="nivoSlider"> <a href="http://www.techo.org/en-tu-pais/techo-onuhabitat-fondos/" class="nivo-imageLink" style="display: none;"><img title="TECHO-Uruguay  gana fondos de ONU Habitat para un  proyecto de integración de 50 jóvenes de asentamientos" src="http://www.techo.org/wp-content/uploads/2012/11/DSC_1626.MOV.Imagen-fija001-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/en-tu-pais/suez/" class="nivo-imageLink" style="display: none;"><img title="GDF Suez confirma su compromiso con TECHO en las primeras construcciones conjuntas en Argentina" src="http://www.techo.org/wp-content/uploads/2012/10/2-suez-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/en-tu-pais/haiti-nomaspobreza/" class="nivo-imageLink" style="display: block;"><img title="Haití se compromete a salir de la pobreza mediante el trabajo voluntario" src="http://www.techo.org/wp-content/uploads/2012/10/volontè-nan-Ovanille-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><a href="http://www.techo.org/en-tu-pais/artecho/" class="nivo-imageLink" style="display: none;"><img title="Se acerca ARTECHO 2012: 20 artistas son invitados a unirse para superar la pobreza" src="http://www.techo.org/wp-content/uploads/2012/10/ARTECHO-TECHO-pobreza-destacada-660x182.jpg" alt="" style="width: 662px; visibility: hidden; display: inline;"></a><img class="nivo-main-image" src="http://www.techo.org/wp-content/uploads/2012/10/volontè-nan-Ovanille-660x182.jpg" style="display: inline; height: 183px;">
+            <div class="nivo-caption" style="display: block;">Haití se compromete a salir de la pobreza mediante el trabajo voluntario</div>
+            <div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
+            <div class="nivo-slice" name="0" style="left: 0px; width: 662px; height: 183px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="http://www.techo.org/wp-content/uploads/2012/10/volontè-nan-Ovanille-660x182.jpg" style="position:absolute; width:662px; height:auto; display:block !important; top:0; left:-0px;"></div>
+          </div>
+          <div class="nivo-controlNav"><a class="nivo-control" rel="0">1</a><a class="nivo-control" rel="1">2</a><a class="nivo-control active" rel="2">3</a><a class="nivo-control" rel="3">4</a></div>
+        </div>
+        <h2>Videos sobre Techo</h2>
+        <ul class="videos">
+          <li class=""><a title="Video Institucional TECHO" class="lightbox" href="http://www.youtube.com/watch?v=Ownint18mEo"><img src="http://img.youtube.com/vi/Ownint18mEo/0.jpg" alt=""></a></li>
+          <li class=""><a title="Proyectos soluciones definitivas en asentamientos precarios" class="lightbox" href="http://www.youtube.com/watch?v=u2Uo6fRxGKI"><img src="http://img.youtube.com/vi/u2Uo6fRxGKI/0.jpg" alt=""></a></li>
+          <li class="last"><a title="¿Por qué ahora somos #TECHO?" class="lightbox" href="http://www.youtube.com/watch?v=QlPyunEHqdI"><img src="http://img.youtube.com/vi/QlPyunEHqdI/0.jpg" alt=""></a></li>
+        </ul>
+        <div class="more_videos"><a href="http://www.techo.org/videos/">Ver más videos sobre Techo »</a></div>
+      </div>
+      <div class="right_panel">
+        <div class="social">
+          <div class="fb-like-box" data-href="https://www.facebook.com/pages/Techo/79616214317" data-width="260" data-height="200" data-show-faces="true" data-stream="false" data-header="true"></div>
+          <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script><script>
+	new TWTR.Widget({
+	  version: 2,
+	  type: 'profile',
+	  rpp: 1,
+	  interval: 30000,
+	  width: 260,
+	  height: 300,
+	  theme: {
+		shell: {
+		  background: '#d9d9d9',
+		  color: '#2d7fc6'
+		},
+		tweets: {
+		  background: '#ffffff',
+		  color: '#8e9aa9',
+		  links: '#2d7fc6'
+		}
+	  },
+	  features: {
+		scrollbar: false,
+		loop: false,
+		live: false,
+		behavior: 'all'
+	  }
+	}).render().setUser('untecho').start();
+	</script></div>
+      </div>
+    </div>
+  </section>
+</div>

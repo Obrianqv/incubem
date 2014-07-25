@@ -1,0 +1,112 @@
+<html><head>
+<?php Tag::css('curriculo')?>
+
+<?php echo Html::includeCss(); ?>
+<link rel="stylesheet" type="text/css" media="all" href="../_shared/partials/incubem/styles/flags.css">
+<link rel="stylesheet" type="text/css" media="all" href="../_shared/partials/incubem/styles/curriculo.css">
+<link rel="stylesheet" type="text/css" href="http://pilote.techo.org/styles/smoothness/jquery-ui-1.8.13.custom.css">
+</head>
+<body>
+<div class="wrapper postulaciones">
+    <section id="postulaciones" class="contenedor-left">
+        <div class="postulaciones-header">
+            <h1>POSTULACIONES</h1> 
+        </div>
+                    <article id="1" class="postulacion-resumen">
+                <time class="fecha-creacion">hace 5 días</time>
+                <h2>
+                    <a href="">
+                    Coordinador(a) de Formación y Voluntariado - Región de Coquimbo
+                    </a>
+                </h2>
+                <p class="pais">Chile
+                    <span class="flag flag-cl"></span>
+                </p>
+                <p class="extracto">
+                    Coordinador(a) de Formación y Voluntariado - Región de Coquimbo
+                </p>
+                <p class="fecha-limite">
+                    <span>Fecha limite postular: </span>
+                    <time>09/05/2014</time>
+                </p>
+            </article>
+                    <article id="1" class="postulacion-resumen">
+                <time class="fecha-creacion">hace 10 días</time>
+                <h2>
+                    <a href="../_shared/partials/incubem/?do=postulacion.verPostulacion&idPostulacion=260">
+                    Director Regional RM TECHO - Chile
+                    </a>
+                </h2>
+                <p class="pais">Chile
+                    <span class="flag flag-cl"></span>
+                </p>
+                <p class="extracto">
+                    Director Regional RM TECHO - Chile
+                </p>
+                <p class="fecha-limite">
+                    <span>Fecha limite postular: </span>
+                    <time>11/05/2014</time>
+                </p>
+            </article>
+                <section class="paginacion clearfix">
+            <span><a href="#">&gt;</a></span>
+            <span><a href="#">&lt;</a></span>
+            <p>1 de 1 paginas</p>
+        </section>
+    </section>
+    <section class="contenedor-right">
+        <div class="buscar">
+            <div class="postulaciones-header">
+                <h1>Buscar</h1> 
+            </div>
+            <div>
+                <form method="get" class="form-postulacion">
+                    <input type="hidden" value="postulacion.postulaciones" name="do">
+                    <div>
+                        <label for="keywords">Palabras claves</label>
+                        <input type="text" id="keywords" name="keywords">
+                    </div>
+                    <div>
+                        <label for="pais">País</label>
+                        <input type="text" id="pais" name="pais" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-postulacion">
+                            Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <div class="login">
+            <div class="registrarse">
+                <span>¿No tienes cuenta? puedes </span>
+                <a href="../_shared/partials/incubem/?do=curriculo.crear">Registrarte aquí</a>
+            </div>
+            <form action="../_shared/partials/incubem/?do=personas.autenticar" method="post" class="form-postulacion">
+                <div>
+                    <label for="correo">Correo electrónico</label>
+                    <input type="text" id="correo" name="correo">
+                </div>
+                <div>
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena">
+                </div>
+                <div>
+                    <input type="submit" value="Iniciar sesion"> 
+                </div>
+            </form>
+        </div>
+        </section>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://pilote.techo.org/jScripts/jquery-ui-1.8.13.custom.min.js"></script>
+<script>
+$(function() {
+    var availableTags = [ "Argentina", "Brasil", "Chile", "Colombia", "Costa rica", "Ecuador", "El salvador", "Guatemala", "Mexico", "Nicaragua", "Paraguay", "Perú", "República Dominicana", "Uruguay", "Latinoamérica", "Bolivia", "Haití", "Panamá", "Honduras", "Venezuela" ]; 
+    $( "#pais" ).autocomplete({ source: availableTags }); 
+});
+</script>
+
+
+<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul></body></html>

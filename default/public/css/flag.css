@@ -1,0 +1,26 @@
+.flag {
+	width: 16px;
+	height: 11px;
+	background:url(images/flags.png) no-repeat
+}
+
+.flag.flag-ar {background-position: -16px 0}
+.flag.flag-bo {background-position: -32px 0}
+.flag.flag-br {background-position: -48px 0}
+.flag.flag-cl {background-position: -64px 0}
+.flag.flag-co {background-position: 0 -11px}
+.flag.flag-cr {background-position: -16px -11px}
+.flag.flag-do {background-position: -32px -11px}
+.flag.flag-ec {background-position: -48px -11px}
+.flag.flag-gt {background-position: -64px -11px}
+.flag.flag-hn {background-position: 0 -22px}
+.flag.flag-ht {background-position: -16px -22px}
+.flag.flag-mx {background-position: -32px -22px}
+.flag.flag-ni {background-position: -48px -22px}
+.flag.flag-pa {background-position: -64px -22px}
+.flag.flag-pe {background-position: 0 -33px}
+.flag.flag-py {background-position: -16px -33px}
+.flag.flag-sv {background-position: -32px -33px}
+.flag.flag-us {background-position: -48px -33px}
+.flag.flag-uy {background-position: -64px -33px}
+.flag.flag-ve {background-position: 0 -44px}

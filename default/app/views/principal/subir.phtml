@@ -1,0 +1,24 @@
+<?php View::content(); ?>
+
+<!-- archivo /views/archivos/index.phtml -->
+ 
+ 
+  <div id="content">
+<br/>
+<h1>Subida de Archivo</h1>
+<?php echo Form::openMultipart('principal/archivo') ?>
+    Ingrese un archivo .zip ó .rar:
+    <?php echo Form::file('archivo') ?>
+    <?php echo Form::hidden('oculto') //para saber si se envió el form ?>
+    <?php echo Form::submit('subir') ?>
+<?php echo Form::close() ?>
+<br/>
+<br/>
+<h1>Subida de Imagen</h1>
+<?php echo Form::openMultipart('principal/imagen') ?>
+    Ingrese una imagen .jpg , .gif ó .png :
+    <?php echo Form::file('archivo') ?>
+    <?php echo Form::hidden('oculto') //para saber si se envió el form ?>
+    <?php echo Form::submit('subir') ?>
+<?php echo Form::close() ?>
+</div>

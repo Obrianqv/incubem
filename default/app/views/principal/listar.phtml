@@ -1,0 +1,18 @@
+<?php View::content();?>
+	
+    
+<ul>
+
+<?php foreach($listaEvento as $item) : ?>
+
+<img src="<?php echo $item -> ruta ?>" width="400" height="400" />
+
+<?php echo $item -> id ?> \_/ 
+<?php echo $item -> ruta ?> \_/ 
+
+<?php echo Html::linkAction("del/$item->id/", 'Borrar') ?>
+
+<br />
+<?php endforeach; ?>
+</ul>
+<br />
